@@ -7,15 +7,16 @@
   "scripts": {
     "start": "node .",
     "start:dev": "nodemon -q",
-    "test": "jest src --passWithNoTests --watchAll=false",
+    "test": "jest src --watchAll=false",
     "test:dev": "jest src --watch",
-    "test:coverage": "jest src --coverage --passWithNoTests --watchAll=false",
+    "test:coverage": "jest src --coverage --watchAll=false",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "eslint": "^8.21.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -34,5 +35,14 @@
   },
   "engines": {
     "node": "^18.x"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
   }
 }
