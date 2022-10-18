@@ -18,10 +18,10 @@ describe("Given a CreateError function", () => {
   });
 
   describe("When instantiated with private and public messages, but without error code", () => {
-    test(`Then it should return an error object with a code ${codes.badRequest}`, () => {
+    test(`Then it should return an error object with a code ${codes.internalServerError}`, () => {
       const expectedError = new Error("");
       expectedError.message = publicError;
-      expectedError.code = codes.badRequest;
+      expectedError.code = codes.internalServerError;
 
       const resultError = CreateError(undefined, privateMessage, publicError);
 
