@@ -1,7 +1,7 @@
 import codes from "../config/codes";
 
-const notFound = (_, res) => {
+const endpointNotFound = (_, res) => {
   res.status(codes.notFound).json({ error: "Endpoint not found" });
 };
 
-export default notFound;
+export default endpointNotFound;
