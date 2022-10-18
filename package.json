@@ -5,10 +5,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "ts": "tsc",
-    "ts:dev": "tsc -w",
     "start": "node .",
-    "start:dev": "nodemon -q"
+    "start:dev": "nodemon -q",
+    "test": "jest src --passWithNoTests --watchAll=false",
+    "test:dev": "jest src --watch",
+    "test:coverage": "jest src --coverage --passWithNoTests --watchAll=false"
   },
   "keywords": [],
   "author": "",
@@ -28,5 +29,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "^18.x"
   }
 }
