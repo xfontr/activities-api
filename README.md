@@ -33,3 +33,7 @@
 - ID: 10 numbers, unique, auto
 - Name: 100 characters, string
 - Description: string
+
+# PRODUCTION BUILD
+
+https://activities-back.herokuapp.com/
