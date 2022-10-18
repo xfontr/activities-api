@@ -1,4 +1,4 @@
-import codes from "../config/codes";
+import codes from "../../config/codes";
 import endpointNotFound from "./endpointNotFound";
 
 describe("Given a endpointNotFound middleware", () => {
