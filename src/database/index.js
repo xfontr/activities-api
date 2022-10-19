@@ -5,6 +5,7 @@ import Debug from "debug";
 import chalk from "chalk";
 import SportsCenter from "./models/SportsCenter.js";
 import User from "./models/User.js";
+import Activity from "./models/Activity.js";
 
 const debug = Debug("activities:database:index");
 
@@ -18,6 +19,7 @@ export const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
 const loadModels = () => {
   SportsCenter(sequelize);
   User(sequelize);
+  Activity(sequelize);
 };
 
 export const databaseSync = async () => {

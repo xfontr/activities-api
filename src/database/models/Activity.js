@@ -1,11 +1,11 @@
 import { DataTypes } from "sequelize";
 import { options, requirements } from "../../config/models.js";
 
-const { id, list } = options;
+const { id } = options;
 const { name } = requirements;
 
-const SportsCenter = (sequelize) =>
-  sequelize.define("SportsCenter", {
+const Activity = (sequelize) =>
+  sequelize.define("Activity", {
     id: { ...id },
 
     name: {
@@ -14,9 +14,7 @@ const SportsCenter = (sequelize) =>
 
     description: DataTypes.TEXT,
 
-    users: { ...list },
-
-    activities: { ...list },
+    center: DataTypes.STRING,
   });
 
-export default SportsCenter;
+export default Activity;
