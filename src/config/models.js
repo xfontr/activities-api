@@ -11,6 +11,7 @@ export const requirements = {
 export const options = {
   id: {
     type: DataTypes.INTEGER(requirements.idLength),
+    unique: true,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
@@ -20,11 +21,5 @@ export const options = {
   },
   list: {
     type: DataTypes.STRING,
-    get: (list) => {
-      return this.getDataValue(list).split(";");
-    },
-    set(list, values) {
-      this.setDataValue(list, values.join(";"));
-    },
   },
 };

@@ -4,7 +4,7 @@ import { options, requirements } from "../../config/models.js";
 const { id } = options;
 const { name } = requirements;
 
-const Activity = (sequelize) =>
+const ActivityModel = (sequelize) =>
   sequelize.define("Activity", {
     id: { ...id },
 
@@ -17,4 +17,4 @@ const Activity = (sequelize) =>
     center: DataTypes.STRING,
   });
 
-export default Activity;
+export default ActivityModel;

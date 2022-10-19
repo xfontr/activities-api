@@ -1,4 +1,4 @@
-import codes from "../../config/codes";
+import codes from "../../config/codes.js";
 import Debug from "debug";
 import chalk from "chalk";
 

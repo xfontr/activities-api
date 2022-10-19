@@ -1,4 +1,4 @@
-import codes from "../../config/codes";
+import codes from "../../config/codes.js";
 
 const CreateError = (code, privateMessage, publicMessage) => {
   const error = new Error(publicMessage);
