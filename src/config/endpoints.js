@@ -7,6 +7,10 @@ const endpoints = {
     router: "/sport-centers",
     root: "/",
   },
+  activities: {
+    router: "/activities",
+    root: "/",
+  },
 };
 
 export default endpoints;
