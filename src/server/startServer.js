@@ -1,8 +1,8 @@
 import "../loadEnvironment.js";
-import app from "./index.js";
-import environment from "../config/environment.js";
 import Debug from "debug";
 import chalk from "chalk";
+import app from "./index.js";
+import environment from "../config/environment.js";
 
 const debug = Debug("activities:start");
 

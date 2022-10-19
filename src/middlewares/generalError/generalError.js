@@ -1,6 +1,6 @@
-import codes from "../../config/codes.js";
 import Debug from "debug";
 import chalk from "chalk";
+import codes from "../../config/codes.js";
 
 const debug = Debug("activities:middlewares:error");
 
