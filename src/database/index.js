@@ -1,8 +1,8 @@
 import "../loadEnvironment.js";
-import environment from "../config/environment.js";
 import Sequelize from "sequelize";
 import Debug from "debug";
 import chalk from "chalk";
+import environment from "../config/environment.js";
 import SportsCenterModel from "./models/SportsCenter.model.js";
 import UserModel from "./models/User.model.js";
 import ActivityModel from "./models/Activity.model.js";
