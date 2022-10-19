@@ -1,7 +1,7 @@
 import codes from "../../config/codes.js";
 import { emptySportsCenterModel } from "../../data/emptyModels.js";
 import { SportsCenter } from "../../database/index.js";
-import CreateError from "../../utils/CreateError/CreateError";
+import CreateError from "../../utils/CreateError/CreateError.js";
 import curateData from "../../utils/curateData/curateData.js";
 
 const newSportsCenter = async (req, res, next) => {
