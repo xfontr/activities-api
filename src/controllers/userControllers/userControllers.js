@@ -12,8 +12,8 @@ export const newUser = async (req, res, next) => {
       throw new Error("Empty request");
     }
 
-    const newUser = await User.create(curateData(emptyUserModel, userData));
-    res.status(codes.created).json({ newUser });
+    const createdUser = await User.create(curateData(emptyUserModel, userData));
+    res.status(codes.created).json({ createdUser });
   } catch (error) {
     const newError = CreateError(
       codes.badRequest,
@@ -23,3 +23,5 @@ export const newUser = async (req, res, next) => {
     next(newError);
   }
 };
+
+export default newUser;

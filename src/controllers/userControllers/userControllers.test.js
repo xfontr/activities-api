@@ -1,6 +1,6 @@
 import codes from "../../config/codes";
 import { User } from "../../database";
-import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser.js";
+import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser";
 import CreateError from "../../utils/CreateError/CreateError";
 import { newUser } from "./userControllers";
 
@@ -28,7 +28,7 @@ describe("Given a newUser controller", () => {
 
         await newUser(req, res, next);
 
-        expect(res.json).toHaveBeenCalledWith({ newUser: expectedUser });
+        expect(res.json).toHaveBeenCalledWith({ createdUser: expectedUser });
       });
     });
 

@@ -6,3 +6,10 @@ export const emptyUserModel = {
   secondSurname: "",
   fullName: "",
 };
+
+export const emptySportsCenterModel = {
+  name: "",
+  activities: [],
+  users: [],
+  description: "",
+};

@@ -14,13 +14,13 @@ const UserModel = (sequelize) =>
     fullName: {
       type: DataTypes.STRING,
       set() {
-        const name = this.getDataValue("name") || "";
+        const username = this.getDataValue("name") || "";
         const firstSurname = this.getDataValue("firstSurname") || "";
         const secondSurname = this.getDataValue("secondSurname") || "";
 
         this.setDataValue(
           "fullName",
-          `${name} ${firstSurname} ${secondSurname}`
+          `${username} ${firstSurname} ${secondSurname}`
         );
       },
     },
@@ -28,7 +28,7 @@ const UserModel = (sequelize) =>
     sportCenters: {
       ...list,
       get() {
-        return this.getDataValue("activities").split(";");
+        return this.getDataValue("sportCenters").split(";");
       },
       set(values) {
         this.setDataValue("sportCenters", values.join(";"));

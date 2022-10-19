@@ -10,13 +10,30 @@ const SportsCenterModel = (sequelize) =>
 
     name: {
       type: DataTypes.STRING(name.long),
+      allowNull: false,
     },
 
-    description: DataTypes.TEXT,
+    description: { type: DataTypes.TEXT },
 
-    users: { ...list },
+    users: {
+      ...list,
+      get() {
+        return this.getDataValue("users").split(";");
+      },
+      set(values) {
+        this.setDataValue("users", values.join(";"));
+      },
+    },
 
-    activities: { ...list },
+    activities: {
+      ...list,
+      get() {
+        return this.getDataValue("activities").split(";");
+      },
+      set(values) {
+        this.setDataValue("activities", values.join(";"));
+      },
+    },
   });
 
 export default SportsCenterModel;
