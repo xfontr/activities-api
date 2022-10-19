@@ -3,6 +3,10 @@ const endpoints = {
     router: "/users",
     root: "/",
   },
+  sportCenters: {
+    router: "/sport-centers",
+    root: "/",
+  },
 };
 
 export default endpoints;
