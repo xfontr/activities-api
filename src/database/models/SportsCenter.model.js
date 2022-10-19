@@ -18,10 +18,15 @@ const SportsCenterModel = (sequelize) =>
     users: {
       ...list,
       get() {
-        return this.getDataValue("users").split(";");
+        return this.getDataValue("users")
+          .split(";")
+          .map((user) => JSON.parse(user));
       },
       set(values) {
-        this.setDataValue("users", values.join(";"));
+        this.setDataValue(
+          "users",
+          values.map((user) => JSON.stringify(user)).join(";")
+        );
       },
     },
 

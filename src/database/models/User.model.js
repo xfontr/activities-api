@@ -25,16 +25,6 @@ const UserModel = (sequelize) =>
       },
     },
 
-    sportCenters: {
-      ...list,
-      get() {
-        return this.getDataValue("sportCenters").split(";");
-      },
-      set(values) {
-        this.setDataValue("sportCenters", values.join(";"));
-      },
-    },
-
     activities: {
       ...list,
       get() {
