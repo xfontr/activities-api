@@ -13,6 +13,13 @@ const User = (sequelize) =>
 
     fullName: {
       type: DataTypes.STRING,
+      get: () => {
+        const name = this.getDataValue("name");
+        const firstSurname = this.getDataValue("firstSurname");
+        const secondSurname = this.getDataValue("secondSurname");
+
+        return `${name} ${firstSurname} ${secondSurname}`;
+      },
     },
 
     sportCenters: { ...list },

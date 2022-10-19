@@ -1,6 +1,6 @@
 import "../loadEnvironment.js";
 import environment from "../config/environment.js";
-import Sequelize, { DataTypes } from "sequelize";
+import Sequelize from "sequelize";
 import Debug from "debug";
 import chalk from "chalk";
 import SportsCenter from "./models/SportsCenter.js";
@@ -25,7 +25,7 @@ const loadModels = () => {
 export const databaseSync = async () => {
   try {
     loadModels();
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     debug(chalk.green("Models were synchronized successfully"));
   } catch (error) {
     debug(chalk.red(`Error while synchronizing the models: ${error}`));
