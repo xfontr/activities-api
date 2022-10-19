@@ -28,7 +28,7 @@ const UserModel = (sequelize) =>
     sportCenters: {
       ...list,
       get() {
-        return this.getDataValue("sportCenters").split(";");
+        return this.getDataValue("activities").split(";");
       },
       set(values) {
         this.setDataValue("sportCenters", values.join(";"));

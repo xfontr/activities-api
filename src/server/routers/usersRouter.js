@@ -1,6 +1,6 @@
 import express from "express";
 import endpoints from "../../config/endpoints.js";
-import { newUser } from "../../controllers/userControllers.js";
+import { newUser } from "../../controllers/userControllers/userControllers.js";
 
 const {
   users: { root },

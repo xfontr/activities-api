@@ -11,6 +11,7 @@ export const requirements = {
 export const options = {
   id: {
     type: DataTypes.INTEGER(requirements.idLength),
+    unique: true,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
