@@ -28,7 +28,7 @@ describe("Given a newUser controller", () => {
 
         await newUser(req, res, next);
 
-        expect(res.json).toHaveBeenCalledWith({ newUser: expectedUser });
+        expect(res.json).toHaveBeenCalledWith({ createdUser: expectedUser });
       });
     });
 
