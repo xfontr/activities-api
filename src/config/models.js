@@ -20,11 +20,5 @@ export const options = {
   },
   list: {
     type: DataTypes.STRING,
-    get: (list) => {
-      return this.getDataValue(list).split(";");
-    },
-    set(list, values) {
-      this.setDataValue(list, values.join(";"));
-    },
   },
 };

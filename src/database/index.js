@@ -3,9 +3,9 @@ import environment from "../config/environment.js";
 import Sequelize from "sequelize";
 import Debug from "debug";
 import chalk from "chalk";
-import SportsCenter from "./models/SportsCenter.js";
-import User from "./models/User.js";
-import Activity from "./models/Activity.js";
+import SportsCenterModel from "./models/SportsCenter.model.js";
+import UserModel from "./models/User.model.js";
+import ActivityModel from "./models/Activity.model.js";
 
 const debug = Debug("activities:database:index");
 
@@ -16,15 +16,12 @@ export const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
   dialect: "mysql",
 });
 
-const loadModels = () => {
-  SportsCenter(sequelize);
-  User(sequelize);
-  Activity(sequelize);
-};
+export const SportsCenter = SportsCenterModel(sequelize);
+export const User = UserModel(sequelize);
+export const Activity = ActivityModel(sequelize);
 
 export const databaseSync = async () => {
   try {
-    loadModels();
     await sequelize.sync({ force: false });
     debug(chalk.green("Models were synchronized successfully"));
   } catch (error) {

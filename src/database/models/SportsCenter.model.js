@@ -4,7 +4,7 @@ import { options, requirements } from "../../config/models.js";
 const { id, list } = options;
 const { name } = requirements;
 
-const SportsCenter = (sequelize) =>
+const SportsCenterModel = (sequelize) =>
   sequelize.define("SportsCenter", {
     id: { ...id },
 
@@ -19,4 +19,4 @@ const SportsCenter = (sequelize) =>
     activities: { ...list },
   });
 
-export default SportsCenter;
+export default SportsCenterModel;
