@@ -1,6 +1,6 @@
 import codes from "../../config/codes";
 import { User } from "../../database";
-import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser.js";
+import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser";
 import CreateError from "../../utils/CreateError/CreateError";
 import { newUser } from "./userControllers";
 
