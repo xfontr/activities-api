@@ -8,8 +8,11 @@ export const newUser = async (req, res, next) => {
   const userData = req.body;
 
   try {
+    if (!Object.keys(userData).length) {
+      throw new Error("Empty request");
+    }
+
     const newUser = await User.create(curateData(emptyUserModel, userData));
-    console.log(newUser);
     res.status(codes.created).json({ newUser });
   } catch (error) {
     const newError = CreateError(
