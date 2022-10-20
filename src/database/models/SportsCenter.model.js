@@ -9,7 +9,7 @@ const SportsCenterModel = (sequelize) =>
     id: { ...id },
 
     name: {
-      type: DataTypes.STRING(name.long),
+      type: DataTypes.CHAR(name.long),
       allowNull: false,
     },
 
@@ -19,14 +19,11 @@ const SportsCenterModel = (sequelize) =>
       ...list,
       get() {
         return this.getDataValue("users")
-          .split(";")
-          .map((user) => JSON.parse(user));
+          ? JSON.parse(this.getDataValue("users"))
+          : [];
       },
       set(values) {
-        this.setDataValue(
-          "users",
-          values.map((user) => JSON.stringify(user)).join(";")
-        );
+        this.setDataValue("users", JSON.stringify(values));
       },
     },
 

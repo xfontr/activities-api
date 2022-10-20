@@ -9,13 +9,13 @@ const ActivityModel = (sequelize) =>
     id: { ...id },
 
     name: {
-      type: DataTypes.STRING(name.long),
+      type: DataTypes.CHAR(name.long),
       allowNull: false,
     },
 
     description: DataTypes.TEXT,
 
-    center: { type: DataTypes.STRING, allowNull: false },
+    center: { type: DataTypes.CHAR, allowNull: false },
   });
 
 export default ActivityModel;

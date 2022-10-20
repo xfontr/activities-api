@@ -17,9 +17,9 @@ export const options = {
     allowNull: false,
   },
   name: {
-    type: DataTypes.STRING(requirements.name.short),
+    type: DataTypes.CHAR(requirements.name.short),
   },
   list: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
 };

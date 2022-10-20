@@ -7,7 +7,7 @@ export const emptyUserModel = {
 };
 
 export const emptySportsCenterModel = {
-  activities: [],
-  users: [],
+  activities: [""],
+  users: [""],
   description: "",
 };

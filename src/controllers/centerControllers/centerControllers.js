@@ -49,16 +49,19 @@ export const signUserUp = async (req, res, next) => {
 
     if (userData.id) {
       user = await User.findByPk(userData.id);
-    }
-
-    if (!user) {
+    } else {
       user = await User.create(curateData(emptyUserModel, userData));
     }
 
-    sportsCenter.update({
-      ...sportsCenter,
-      users: [...sportsCenter.users, { ...user.dataValues }],
-    });
+    if (!user) {
+      throw new Error(
+        "The requested user doesn't exist or the sign up data was not valid"
+      );
+    }
+
+    sportsCenter.users = [...sportsCenter.users, user.dataValues];
+
+    await sportsCenter.save();
 
     res.status(codes.ok).json({
       success: `User with id ${user.id} was added to the requested center`,
@@ -67,7 +70,7 @@ export const signUserUp = async (req, res, next) => {
     const newError = CreateError(
       codes.badRequest,
       error.message,
-      "Invalid request. The requested center doesn't exist or the user was already signed up"
+      "Invalid request. Try providing a valid user id or valid user registration data. Make sure that the provided center ID is correct"
     );
     next(newError);
   }

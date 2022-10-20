@@ -12,7 +12,7 @@ const UserModel = (sequelize) =>
     secondSurname: { ...name },
 
     fullName: {
-      type: DataTypes.STRING,
+      type: DataTypes.CHAR,
       set() {
         const username = this.getDataValue("name") || "";
         const firstSurname = this.getDataValue("firstSurname") || "";
