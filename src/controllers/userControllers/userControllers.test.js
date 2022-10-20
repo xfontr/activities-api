@@ -1,8 +1,9 @@
 import codes from "../../config/codes";
-import { User } from "../../database";
+import { Activity, User } from "../../database";
 import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser";
+import mockActivity from "../../test-utils/mocks/mockActivity";
 import CreateError from "../../utils/CreateError/CreateError";
-import { newUser } from "./userControllers";
+import { joinActivity, newUser } from "./userControllers";
 
 describe("Given a newUser controller", () => {
   describe("When called with a request, a response and a next function", () => {
@@ -66,6 +67,87 @@ describe("Given a newUser controller", () => {
 
         const calledWith = next.mock.calls[0][0];
         expect(calledWith.message).toBe(expectedError.message);
+      });
+    });
+  });
+});
+
+describe("Given a joinActivity controller", () => {
+  describe("When called with a request, a response and a next function", () => {
+    const id = 1;
+    const req = {
+      params: { userId: id },
+      query: { activityId: id },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    const next = jest.fn();
+
+    const mockAddActivity = jest.fn();
+
+    describe("And the request contains a valid user and a valid activity", () => {
+      User.findByPk = () => ({
+        ...mockUser,
+        id,
+        addActivity: mockAddActivity,
+      });
+      Activity.findByPk = () => ({ ...mockActivity, id });
+
+      test(`Then it should respond with a status of ${codes.ok}`, async () => {
+        await joinActivity(req, res, next);
+
+        expect(res.status).toHaveBeenCalledWith(codes.ok);
+      });
+
+      test("Then it should respond with a success message, after adding the activity", async () => {
+        const expectedResponse = {
+          success: `Activity with id ${id} added to the user with id ${id}`,
+        };
+
+        await joinActivity(req, res, next);
+
+        expect(mockAddActivity).toHaveBeenCalled();
+        expect(res.json).toHaveBeenCalledWith(expectedResponse);
+      });
+    });
+
+    describe("And the request contains an ivalid user and a valid activity", () => {
+      test.only("Then it should call next with an error", async () => {
+        User.findByPk = () =>
+          Promise.reject(new Error("Invalid user or activity"));
+
+        const expectedError = CreateError(
+          codes.badRequest,
+          "Invalid user or activity",
+          "Invalid request"
+        );
+
+        await joinActivity(req, res, next);
+
+        expect(next).toHaveBeenCalledWith(expectedError);
+        const calledWith = next.mock.calls[0][0];
+        expect(calledWith.privateMessage).toBe("Invalid user or activity");
+      });
+    });
+
+    describe("And the request contains an ivalid activity and a valid user", () => {
+      test("Then it should call next with an error", async () => {
+        Activity.findByPk = () =>
+          Promise.reject(new Error("Invalid user or activity"));
+
+        const expectedError = CreateError(
+          codes.badRequest,
+          "Invalid user or activity",
+          "Invalid request"
+        );
+
+        await joinActivity(req, res, next);
+
+        expect(next).toHaveBeenCalledWith(expectedError);
+        const calledWith = next.mock.calls[0][0];
+        expect(calledWith.privateMessage).toBe("Invalid user or activity");
       });
     });
   });

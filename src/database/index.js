@@ -26,7 +26,7 @@ const runAssociations = () => {
   });
 
   Activity.belongsTo(SportsCenter, {
-    foreignKey: "id",
+    foreignKey: "centerId",
     target_key: "centerId",
   });
 

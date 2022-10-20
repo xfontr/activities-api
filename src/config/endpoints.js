@@ -2,6 +2,7 @@ const endpoints = {
   users: {
     router: "/users",
     root: "/",
+    user: "/:userId",
   },
   sportCenters: {
     router: "/sport-centers",
