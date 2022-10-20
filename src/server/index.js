@@ -2,11 +2,11 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import endpoints from "../config/endpoints.js";
-import usersRouter from "./routers/usersRouter.js";
+import usersRouter from "./routers/userRouter/usersRouter.js";
 import endpointNotFound from "../middlewares/endpointNotFound/endpointNotFound.js";
 import generalError from "../middlewares/generalError/generalError.js";
-import sportsCenterRouter from "./routers/sportCenterRouter.js";
-import activitiesRouter from "./routers/activityRouter.js";
+import sportsCenterRouter from "./routers/sportCenterRouter/sportCenterRouter.js";
+import activitiesRouter from "./routers/activityRouter/activityRouter.js";
 
 const app = express();
 

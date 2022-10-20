@@ -1,10 +1,10 @@
 import express from "express";
-import endpoints from "../../config/endpoints.js";
+import endpoints from "../../../config/endpoints.js";
 import {
   newSportsCenter,
   signUserUp,
-} from "../../controllers/centerControllers/centerControllers.js";
-import validateRequest from "../../middlewares/validateRequest/validateRequest.js";
+} from "../../../controllers/centerControllers/centerControllers.js";
+import validateRequest from "../../../middlewares/validateRequest/validateRequest.js";
 
 const {
   sportCenters: { root },
