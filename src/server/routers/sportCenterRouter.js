@@ -4,6 +4,7 @@ import {
   newSportsCenter,
   signUserUp,
 } from "../../controllers/centerControllers/centerControllers.js";
+import validateRequest from "../../middlewares/validateRequest/validateRequest.js";
 
 const {
   sportCenters: { root },
@@ -11,7 +12,7 @@ const {
 
 const sportsCenterRouter = express.Router();
 
-sportsCenterRouter.post(root, newSportsCenter);
-sportsCenterRouter.patch(root, signUserUp);
+sportsCenterRouter.post(root, validateRequest, newSportsCenter);
+sportsCenterRouter.patch(root, validateRequest, signUserUp);
 
 export default sportsCenterRouter;

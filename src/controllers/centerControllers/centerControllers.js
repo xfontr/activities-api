@@ -31,10 +31,6 @@ export const signUserUp = async (req, res, next) => {
   const userData = req.body;
 
   try {
-    if (!Object.keys(userData).length) {
-      throw new Error("Empty request");
-    }
-
     const sportsCenter = await SportsCenter.findByPk(centerId);
 
     if (!sportsCenter) {
@@ -67,9 +63,10 @@ export const signUserUp = async (req, res, next) => {
       success: `User with id ${user.id} was added to the requested center`,
     });
   } catch (error) {
+    const errorMessage = error.message;
     const newError = CreateError(
       codes.badRequest,
-      error.message,
+      errorMessage,
       "Invalid request. Try providing a valid user id or valid user registration data. Make sure that the provided center ID is correct"
     );
     next(newError);
