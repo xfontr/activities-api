@@ -15,7 +15,14 @@ const ActivityModel = (sequelize) =>
 
     description: DataTypes.TEXT,
 
-    center: { type: DataTypes.CHAR, allowNull: false },
+    centerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "SportsCenter",
+        key: "id",
+      },
+    },
   });
 
 export default ActivityModel;
