@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { options } from "../../config/models.js";
 
-const { id, name, list } = options;
+const { id, name } = options;
 
 const UserModel = (sequelize) =>
   sequelize.define("User", {
@@ -25,15 +25,15 @@ const UserModel = (sequelize) =>
       },
     },
 
-    activities: {
-      ...list,
-      get() {
-        return this.getDataValue("activities").split(";");
-      },
-      set(values) {
-        this.setDataValue("activities", values.join(";"));
-      },
-    },
+    // activities: {
+    //   ...list,
+    //   get() {
+    //     return this.getDataValue("activities").split(";");
+    //   },
+    //   set(values) {
+    //     this.setDataValue("activities", values.join(";"));
+    //   },
+    // },
   });
 
 export default UserModel;
