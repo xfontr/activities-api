@@ -1,5 +1,4 @@
 const mockUser = {
-  activities: ["Football"],
   name: "John",
   firstSurname: "Doe",
   secondSurname: "Dao",
@@ -7,7 +6,6 @@ const mockUser = {
 };
 
 export const mockProtoUser = {
-  activities: ["Football"],
   name: mockUser.name,
   firstSurname: mockUser.firstSurname,
   secondSurname: mockUser.secondSurname,
