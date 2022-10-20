@@ -8,7 +8,7 @@ const debug = Debug("activities:middlewares:error");
 const validationError = (error, req, res, next) => {
   if (error instanceof ValidationError) {
     const errorCode = codes.badRequest;
-    const errorMessage = error.message || "Unknown error";
+    const errorMessage = error.message;
 
     debug(chalk.red(`Joi validaton error: ${errorMessage}`));
 
