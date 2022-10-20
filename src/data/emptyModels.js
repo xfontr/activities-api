@@ -1,5 +1,4 @@
 export const emptyUserModel = {
-  sportCenters: [],
   activities: [],
   name: "",
   firstSurname: "",
@@ -8,7 +7,7 @@ export const emptyUserModel = {
 };
 
 export const emptySportsCenterModel = {
-  activities: [],
-  users: [],
+  activities: [""],
+  users: [""],
   description: "",
 };

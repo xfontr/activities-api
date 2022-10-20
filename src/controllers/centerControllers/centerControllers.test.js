@@ -1,7 +1,7 @@
 import codes from "../../config/codes";
 import { SportsCenter } from "../../database";
 import CreateError from "../../utils/CreateError/CreateError";
-import newSportsCenter from "./centerControllers";
+import { newSportsCenter } from "./centerControllers";
 import mockSportsCenter from "../../test-utils/mocks/mockSportsCenter.js";
 
 describe("Given a newSportsCenter controller", () => {

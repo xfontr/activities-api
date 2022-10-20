@@ -1,5 +1,4 @@
 const mockUser = {
-  sportCenters: ["Dir"],
   activities: ["Football"],
   name: "John",
   firstSurname: "Doe",
@@ -8,7 +7,6 @@ const mockUser = {
 };
 
 export const mockProtoUser = {
-  sportCenters: ["Dir"],
   activities: ["Football"],
   name: mockUser.name,
   firstSurname: mockUser.firstSurname,

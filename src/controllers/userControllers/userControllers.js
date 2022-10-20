@@ -13,6 +13,7 @@ export const newUser = async (req, res, next) => {
     }
 
     const createdUser = await User.create(curateData(emptyUserModel, userData));
+
     res.status(codes.created).json({ createdUser });
   } catch (error) {
     const newError = CreateError(
