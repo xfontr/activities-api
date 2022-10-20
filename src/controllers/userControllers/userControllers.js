@@ -1,6 +1,6 @@
 import CreateError from "../../utils/CreateError/CreateError.js";
 import codes from "../../config/codes.js";
-import { Activity, User } from "../../database/index.js";
+import { Activity, User } from "../../database/runModels.js";
 import curateData from "../../utils/curateData/curateData.js";
 import { emptyUserModel } from "../../data/emptyModels.js";
 

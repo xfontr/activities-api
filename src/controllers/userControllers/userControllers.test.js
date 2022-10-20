@@ -1,9 +1,9 @@
 import codes from "../../config/codes";
-import { Activity, User } from "../../database";
 import mockUser, { mockProtoUser } from "../../test-utils/mocks/mockUser";
 import mockActivity from "../../test-utils/mocks/mockActivity";
 import CreateError from "../../utils/CreateError/CreateError";
 import { joinActivity, newUser } from "./userControllers";
+import { User, Activity } from "../../database/runModels";
 
 describe("Given a newUser controller", () => {
   describe("When called with a request, a response and a next function", () => {

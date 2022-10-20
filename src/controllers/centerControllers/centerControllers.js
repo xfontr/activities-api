@@ -3,7 +3,7 @@ import {
   emptySportsCenterModel,
   emptyUserModel,
 } from "../../data/emptyModels.js";
-import { SportsCenter, User } from "../../database/index.js";
+import { SportsCenter, User } from "../../database/runModels.js";
 import CreateError from "../../utils/CreateError/CreateError.js";
 import curateData from "../../utils/curateData/curateData.js";
 
