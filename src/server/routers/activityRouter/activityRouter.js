@@ -1,7 +1,8 @@
 import express from "express";
+import { validate } from "express-validation";
 import endpoints from "../../../config/endpoints.js";
 import newActivity from "../../../controllers/activityControllers/activityControllers.js";
-import validateRequest from "../../../middlewares/validateRequest/validateRequest.js";
+import activitySchema from "../../../schemas/activity.schema.js";
 
 const {
   activities: { root },
@@ -9,6 +10,6 @@ const {
 
 const activitiesRouter = express.Router();
 
-activitiesRouter.post(root, validateRequest, newActivity);
+activitiesRouter.post(root, validate(activitySchema), newActivity);
 
 export default activitiesRouter;
