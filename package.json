@@ -10,7 +10,10 @@
     "test": "jest src --watchAll=false",
     "test:dev": "jest src --watch",
     "test:coverage": "jest src --coverage --watchAll=false",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "db:migrate": "sequelize-cli db:migrate --env production",
+    "db:drop": "sequelize-cli db:drop --env production",
+    "db:create": "sequelize-cli db:create --env production"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +30,8 @@
     "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.1",
     "jest": "^28.1.3",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "sequelize-cli": "^6.5.1"
   },
   "dependencies": {
     "chalk": "^4.1.2",

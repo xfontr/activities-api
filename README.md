@@ -33,6 +33,7 @@
 - ID: 10 numbers, unique, auto
 - Name: 100 characters, string
 - Description: string
+- BelongsTo: 1 sports center
 
 # PRODUCTION BUILD
 

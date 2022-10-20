@@ -16,15 +16,36 @@ export const sequelize = new Sequelize(dbName, dbUsername, dbPassword, {
   dialect: "mysql",
 });
 
-export const SportsCenter = SportsCenterModel(sequelize);
-export const User = UserModel(sequelize);
-export const Activity = ActivityModel(sequelize);
+const SportsCenter = SportsCenterModel(sequelize);
+const Activity = ActivityModel(sequelize);
+const User = UserModel(sequelize);
+
+const runAssociations = () => {
+  SportsCenter.hasMany(Activity, {
+    foreignKey: "centerId",
+  });
+
+  Activity.belongsTo(SportsCenter, {
+    foreignKey: "id",
+    target_key: "centerId",
+  });
+
+  Activity.belongsToMany(User, { through: "user_activities" });
+
+  User.belongsToMany(Activity, {
+    through: "user_activities",
+  });
+};
 
 export const databaseSync = async () => {
   try {
+    runAssociations();
     await sequelize.sync({ force: false });
+
     debug(chalk.green("Models were synchronized successfully"));
   } catch (error) {
     debug(chalk.red(`Error while synchronizing the models: ${error}`));
   }
 };
+
+export { SportsCenter, User, Activity };
