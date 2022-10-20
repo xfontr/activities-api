@@ -16,7 +16,7 @@ describe("Given a generalError middleware", () => {
 
   const next = jest.fn();
   describe("When called with a normal error (with undefined parameters), a request and a response as arguments", () => {
-    test(`Then it should call res.status with a default status of '${codes.internalServerError}'`, () => {
+    test(`Then it should respond with a default status of '${codes.internalServerError}'`, () => {
       const error = new Error();
 
       generalError(error, req, res, next);

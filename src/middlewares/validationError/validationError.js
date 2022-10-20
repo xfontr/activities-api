@@ -4,15 +4,15 @@ import { ValidationError } from "express-validation";
 import codes from "../../config/codes";
 
 const debug = Debug("activities:middlewares:error");
-// eslint-disable-next-line no-unused-vars
+
 const validationError = (error, req, res, next) => {
   if (error instanceof ValidationError) {
     const errorCode = codes.badRequest;
-    const errorMessage = error.message || "Bad request";
+    const errorMessage = error.message || "Unknown error";
 
-    debug(chalk.red("Joi validation error"));
+    debug(chalk.red(`Joi validaton error: ${errorMessage}`));
 
-    res.status(errorCode).json({ error: errorMessage });
+    res.status(errorCode).json({ error: "Bad request" });
   }
   next(error);
 };
