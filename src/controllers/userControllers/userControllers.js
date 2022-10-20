@@ -38,13 +38,15 @@ export const joinActivity = async (req, res, next) => {
     }
 
     await user.addActivity(activity.id);
-    await user.save();
 
-    res.status(codes.ok).send();
+    res.status(codes.ok).json({
+      success: `Activity with id ${activityId} added to the user with id ${userId}`,
+    });
   } catch (error) {
+    const privateMessage = error.message;
     const newError = CreateError(
       codes.badRequest,
-      error.mesage,
+      privateMessage,
       "Invalid request"
     );
     next(newError);
