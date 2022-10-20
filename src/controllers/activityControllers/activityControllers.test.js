@@ -1,8 +1,8 @@
 import codes from "../../config/codes";
-import { Activity } from "../../database";
 import CreateError from "../../utils/CreateError/CreateError";
 import mockActivity from "../../test-utils/mocks/mockActivity.js";
 import newActivity from "./activityControllers";
+import { Activity } from "../../database/runModels";
 
 describe("Given a newActivity controller", () => {
   describe("When called with a request, a response and a next function", () => {

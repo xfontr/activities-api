@@ -1,5 +1,4 @@
 export const emptyUserModel = {
-  // activities: [],
   name: "",
   firstSurname: "",
   secondSurname: "",

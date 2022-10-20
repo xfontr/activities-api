@@ -1,4 +1,4 @@
-import { databaseSync } from "./database/index.js";
+import databaseSync from "./database/index.js";
 import startServer from "./server/startServer.js";
 
 (async () => {

@@ -1,4 +1,4 @@
-import { Activity } from "../../database/index.js";
+import { Activity } from "../../database/runModels.js";
 import codes from "../../config/codes.js";
 import CreateError from "../../utils/CreateError/CreateError.js";
 

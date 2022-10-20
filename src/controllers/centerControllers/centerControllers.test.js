@@ -1,11 +1,11 @@
 import codes from "../../config/codes";
-import { SportsCenter, User } from "../../database";
 import CreateError from "../../utils/CreateError/CreateError";
 import { newSportsCenter, signUserUp } from "./centerControllers";
 import mockSportsCenter from "../../test-utils/mocks/mockSportsCenter.js";
 import mockUser from "../../test-utils/mocks/mockUser";
 import { emptyUserModel } from "../../data/emptyModels";
 import curateData from "../../utils/curateData/curateData";
+import { SportsCenter, User } from "../../database/runModels";
 
 describe("Given a newSportsCenter controller", () => {
   describe("When called with a request, a response and a next function", () => {
