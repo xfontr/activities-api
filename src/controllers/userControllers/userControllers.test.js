@@ -97,8 +97,7 @@ describe("Given a joinActivity controller", () => {
 
     describe("And the request contains an ivalid user and a valid activity", () => {
       test("Then it should call next with an error", async () => {
-        User.findByPk = () =>
-          Promise.reject(new Error("Invalid user or activity"));
+        User.findByPk = () => null;
 
         const expectedError = CreateError(
           codes.badRequest,
@@ -110,14 +109,13 @@ describe("Given a joinActivity controller", () => {
 
         expect(next).toHaveBeenCalledWith(expectedError);
         const calledWith = next.mock.calls[0][0];
-        expect(calledWith.privateMessage).toBe("Invalid user or activity");
+        expect(calledWith.privateMessage).toBe(expectedError.privateMessage);
       });
     });
 
     describe("And the request contains an ivalid activity and a valid user", () => {
       test("Then it should call next with an error", async () => {
-        Activity.findByPk = () =>
-          Promise.reject(new Error("Invalid user or activity"));
+        Activity.findByPk = () => null;
 
         const expectedError = CreateError(
           codes.badRequest,
@@ -129,7 +127,7 @@ describe("Given a joinActivity controller", () => {
 
         expect(next).toHaveBeenCalledWith(expectedError);
         const calledWith = next.mock.calls[0][0];
-        expect(calledWith.privateMessage).toBe("Invalid user or activity");
+        expect(calledWith.privateMessage).toBe(expectedError.privateMessage);
       });
     });
   });
