@@ -108,6 +108,7 @@ describe("Given a signUserUp controller", () => {
 
       test("Then it should call next with an error", async () => {
         const next = jest.fn();
+        const reqId = { ...req, body: { ...mockUser, id: 1 } };
         const expectedError = CreateError(
           codes.badRequest,
           "The user is already signed up",
@@ -118,7 +119,7 @@ describe("Given a signUserUp controller", () => {
           save: mockSave,
         });
 
-        await signUserUp(req, res, next);
+        await signUserUp(reqId, res, next);
 
         expect(next).toHaveBeenCalledWith(expectedError);
         const calledWith = next.mock.calls[0][0];
@@ -151,8 +152,6 @@ describe("Given a signUserUp controller", () => {
     });
 
     describe("And the request specifies a user id", () => {
-      const next = jest.fn();
-
       const idReq = {
         ...req,
         body: {
@@ -160,15 +159,16 @@ describe("Given a signUserUp controller", () => {
         },
       };
 
-      SportsCenter.findByPk = () => ({
-        ...mockSportsCenter,
-        users: [],
-        save: mockSave,
-      });
       User.create = () => mockUser;
 
       test("Then it should try to find an existing user", async () => {
+        const next = jest.fn();
         User.findByPk = jest.fn();
+        SportsCenter.findByPk = () => ({
+          ...mockSportsCenter,
+          users: [],
+          save: mockSave,
+        });
 
         await signUserUp(idReq, res, next);
 
@@ -176,15 +176,20 @@ describe("Given a signUserUp controller", () => {
       });
 
       test("Then it should call next with an error if the specified id doesn't exist", async () => {
+        const next = jest.fn();
+
         const expectedError = CreateError(
           codes.badRequest,
           "The requested user doesn't exist or the sign up data was not valid",
           "Invalid request. Try providing a valid user id or valid user registration data. Make sure that the provided center ID is correct"
         );
-
-        User.findByPk = jest
-          .fn()
-          .mockRejectedValue(
+        SportsCenter.findByPk = () => ({
+          ...mockSportsCenter,
+          users: [],
+          save: mockSave,
+        });
+        User.findByPk = () =>
+          Promise.reject(
             new Error(
               "The requested user doesn't exist or the sign up data was not valid"
             )
@@ -195,6 +200,8 @@ describe("Given a signUserUp controller", () => {
         expect(next).toHaveBeenCalledWith(expectedError);
         const calledWith = next.mock.calls[0][0];
         expect(calledWith.privateMessage).toBe(expectedError.privateMessage);
+
+        User.findByPk = jest.fn();
       });
     });
 
