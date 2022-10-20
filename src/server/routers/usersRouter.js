@@ -4,13 +4,14 @@ import {
   joinActivity,
   newUser,
 } from "../../controllers/userControllers/userControllers.js";
+import validateRequest from "../../middlewares/validateRequest/validateRequest.js";
 
 const {
   users: { root, user },
 } = endpoints;
 const usersRouter = express.Router();
 
-usersRouter.post(root, newUser);
+usersRouter.post(root, validateRequest, newUser);
 usersRouter.patch(user, joinActivity);
 
 export default usersRouter;
