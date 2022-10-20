@@ -3,12 +3,13 @@ import { requirements } from "../config/models.js";
 
 const { name } = requirements;
 
-const activitySchema = {
+const sportCenterSchema = {
   body: Joi.object({
     name: Joi.string().min(1).max(name.long).required(),
     description: Joi.string(),
-    centerId: Joi.number(),
+    users: Joi.array(),
+    activities: Joi.array(),
   }),
 };
 
-export default activitySchema;
+export default sportCenterSchema;

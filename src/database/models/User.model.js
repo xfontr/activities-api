@@ -24,16 +24,6 @@ const UserModel = (sequelize) =>
         );
       },
     },
-
-    // activities: {
-    //   ...list,
-    //   get() {
-    //     return this.getDataValue("activities").split(";");
-    //   },
-    //   set(values) {
-    //     this.setDataValue("activities", values.join(";"));
-    //   },
-    // },
   });
 
 export default UserModel;

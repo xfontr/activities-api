@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import Debug from "debug";
 import { ValidationError } from "express-validation";
-import codes from "../../config/codes";
+import codes from "../../config/codes.js";
 
 const debug = Debug("activities:middlewares:error");
 
