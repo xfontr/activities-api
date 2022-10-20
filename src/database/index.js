@@ -29,6 +29,12 @@ const runAssociations = () => {
     foreignKey: "id",
     target_key: "centerId",
   });
+
+  Activity.belongsToMany(User, { through: "user_activities" });
+
+  User.belongsToMany(Activity, {
+    through: "user_activities",
+  });
 };
 
 export const databaseSync = async () => {

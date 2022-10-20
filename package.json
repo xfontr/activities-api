@@ -10,7 +10,10 @@
     "test": "jest src --watchAll=false",
     "test:dev": "jest src --watch",
     "test:coverage": "jest src --coverage --watchAll=false",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "db:migrate": "sequelize-cli db:migrate --env production",
+    "db:drop": "sequelize-cli db:drop --env production",
+    "db:create": "sequelize-cli db:create --env production"
   },
   "keywords": [],
   "author": "",
