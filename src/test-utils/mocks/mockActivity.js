@@ -1,7 +1,7 @@
 const mockActivity = {
   name: "Yoga",
   description: "Nice and relaxing activity",
-  center: "Some center",
+  centerId: 1,
 };
 
 export default mockActivity;

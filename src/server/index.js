@@ -7,6 +7,7 @@ import endpointNotFound from "../middlewares/endpointNotFound/endpointNotFound.j
 import generalError from "../middlewares/generalError/generalError.js";
 import sportsCenterRouter from "./routers/sportCenterRouter/sportCenterRouter.js";
 import activitiesRouter from "./routers/activityRouter/activityRouter.js";
+import validationError from "../middlewares/validationError/validationError.js";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(sportCenters.router, sportsCenterRouter);
 app.use(activities.router, activitiesRouter);
 
 app.use(endpointNotFound);
+app.use(validationError);
 app.use(generalError);
 
 export default app;
