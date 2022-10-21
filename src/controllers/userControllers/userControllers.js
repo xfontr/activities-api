@@ -1,6 +1,6 @@
 import CreateError from "../../utils/CreateError/CreateError.js";
 import codes from "../../config/codes.js";
-import { Activity, User, UserActivities } from "../../database/runModels.js";
+import { Activity, User } from "../../database/runModels.js";
 import curateData from "../../utils/curateData/curateData.js";
 import { emptyUserModel } from "../../data/emptyModels.js";
 import setOptions from "../../utils/setOptions/setOptions.js";
@@ -62,7 +62,7 @@ export const getAllUsers = async (req, res, next) => {
     const newError = CreateError(
       codes.badRequest,
       privateMessage,
-      "Couldn't retreive the users"
+      "Couldn't retrieve the users"
     );
     next(newError);
   }
