@@ -160,7 +160,7 @@ describe("Given a getAllUsers controller", () => {
       await getAllUsers(req, res, next);
 
       expect(User.findAll).toHaveBeenCalledWith(
-        setOptions(Activity, "name", "description")
+        setOptions(Activity, true, "name", "description")
       );
       expect(res.json).toHaveBeenCalledWith(expectedResponse);
     });

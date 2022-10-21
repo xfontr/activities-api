@@ -77,3 +77,17 @@ describe(`Given a ${sportCenters.router}${sportCenters.root} endpoint`, () => {
     });
   });
 });
+
+describe(`Given a ${sportCenters.router}${sportCenters.root} endpoint`, () => {
+  describe("When requested with GET method", () => {
+    test(`Then it should respond with a status of ${codes.ok}`, async () => {
+      SportsCenter.findAll = () => Promise.resolve([mockSportsCenter]);
+
+      const res = await request(app).get(
+        `${sportCenters.router}${sportCenters.root}`
+      );
+
+      expect(res.statusCode).toBe(codes.ok);
+    });
+  });
+});

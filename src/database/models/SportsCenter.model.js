@@ -26,16 +26,6 @@ const SportsCenterModel = (sequelize) =>
         this.setDataValue("users", JSON.stringify(values));
       },
     },
-
-    activities: {
-      ...list,
-      get() {
-        return this.getDataValue("activities").split(";");
-      },
-      set(values) {
-        this.setDataValue("activities", values.join(";"));
-      },
-    },
   });
 
 export default SportsCenterModel;

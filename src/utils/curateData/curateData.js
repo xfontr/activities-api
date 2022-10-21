@@ -4,6 +4,7 @@ const curateData = (model, item) => {
   Object.keys(model).forEach((key) => {
     if (!item[key]) curatedItem[key] = model[key];
   });
+
   return curatedItem;
 };
 

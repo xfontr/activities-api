@@ -1,16 +1,20 @@
-const setOptions = (model, ...attributes) => ({
-  attributes: {
-    exclude: ["createdAt", "updatedAt"],
-  },
-  include: [
-    {
-      model,
-      attributes,
-      through: {
-        attributes: [],
-      },
+const setOptions = (model, through, ...attributes) => {
+  const options = {
+    attributes: {
+      exclude: ["createdAt", "updatedAt"],
     },
-  ],
-});
+    include: [
+      {
+        model,
+        attributes,
+      },
+    ],
+  };
+
+  if (through)
+    options.include[0] = { ...options.include[0], through: { attributes: [] } };
+
+  return options;
+};
 
 export default setOptions;

@@ -3,9 +3,10 @@ import {
   emptySportsCenterModel,
   emptyUserModel,
 } from "../../data/emptyModels.js";
-import { SportsCenter, User } from "../../database/runModels.js";
+import { Activity, SportsCenter, User } from "../../database/runModels.js";
 import CreateError from "../../utils/CreateError/CreateError.js";
 import curateData from "../../utils/curateData/curateData.js";
+import setOptions from "../../utils/setOptions/setOptions.js";
 
 export const newSportsCenter = async (req, res, next) => {
   const centerData = req.body;
@@ -68,6 +69,24 @@ export const signUserUp = async (req, res, next) => {
       codes.badRequest,
       errorMessage,
       "Invalid request. Try providing a valid user id or valid user registration data. Make sure that the provided center ID is correct"
+    );
+    next(newError);
+  }
+};
+
+export const getAllCenters = async (req, res, next) => {
+  try {
+    const allCenters = await SportsCenter.findAll(
+      setOptions(Activity, false, "name", "description")
+    );
+
+    res.status(codes.ok).json({ allCenters });
+  } catch (error) {
+    const errorMessage = error.message;
+    const newError = CreateError(
+      codes.badRequest,
+      errorMessage,
+      "Couldn't retrieve all the sports centers"
     );
     next(newError);
   }

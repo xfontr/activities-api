@@ -1,11 +1,16 @@
 import codes from "../../config/codes";
 import CreateError from "../../utils/CreateError/CreateError";
-import { newSportsCenter, signUserUp } from "./centerControllers";
+import {
+  getAllCenters,
+  newSportsCenter,
+  signUserUp,
+} from "./centerControllers";
 import mockSportsCenter from "../../test-utils/mocks/mockSportsCenter.js";
 import mockUser from "../../test-utils/mocks/mockUser";
 import { emptyUserModel } from "../../data/emptyModels";
 import curateData from "../../utils/curateData/curateData";
-import { SportsCenter, User } from "../../database/runModels";
+import { Activity, SportsCenter, User } from "../../database/runModels";
+import setOptions from "../../utils/setOptions/setOptions";
 
 describe("Given a newSportsCenter controller", () => {
   describe("When called with a request, a response and a next function", () => {
@@ -231,6 +236,51 @@ describe("Given a signUserUp controller", () => {
           curateData(emptyUserModel, idReq.body)
         );
       });
+    });
+  });
+});
+
+describe("Given a getAllCenters controller", () => {
+  describe("When called with a request, a response and a next function", () => {
+    const req = {};
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    const next = jest.fn();
+
+    test(`Then it should respond with a status of ${codes.ok}`, async () => {
+      SportsCenter.findAll = () => Promise.resolve([mockSportsCenter]);
+
+      await getAllCenters(req, res, next);
+
+      expect(res.status).toHaveBeenCalledWith(codes.ok);
+    });
+
+    test("Then it should respond with all the sports center", async () => {
+      SportsCenter.findAll = jest.fn().mockResolvedValue([mockSportsCenter]);
+
+      await getAllCenters(req, res, next);
+
+      expect(SportsCenter.findAll).toHaveBeenCalledWith(
+        setOptions(Activity, false, "name", "description")
+      );
+
+      expect(res.json).toHaveBeenCalled();
+    });
+
+    test("Then it should call next with an error if something goes wrong", async () => {
+      const expectedError = CreateError(
+        codes.badRequest,
+        "",
+        "Couldn't retrieve all the sports centers"
+      );
+
+      SportsCenter.findAll = jest.fn().mockRejectedValue(new Error());
+
+      await getAllCenters(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(expectedError);
     });
   });
 });

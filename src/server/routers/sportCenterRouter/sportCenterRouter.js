@@ -2,6 +2,7 @@ import express from "express";
 import { validate } from "express-validation";
 import endpoints from "../../../config/endpoints.js";
 import {
+  getAllCenters,
   newSportsCenter,
   signUserUp,
 } from "../../../controllers/centerControllers/centerControllers.js";
@@ -16,5 +17,6 @@ const sportsCenterRouter = express.Router();
 
 sportsCenterRouter.post(root, validate(sportCenterSchema), newSportsCenter);
 sportsCenterRouter.patch(root, validateRequest, signUserUp);
+sportsCenterRouter.get(root, getAllCenters);
 
 export default sportsCenterRouter;
