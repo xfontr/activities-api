@@ -65,3 +65,27 @@ describe(`Given a ${users.router}${users.user} endpoint`, () => {
     });
   });
 });
+
+describe(`Given a ${users.router}${users.root} endpoint`, () => {
+  describe("When requested with GET method", () => {
+    describe("And the database has users to retrieve", () => {
+      test(`Then it should respond with a status of ${codes.ok}`, async () => {
+        User.findAll = () => Promise.resolve([{ ...mockUser, activities: [] }]);
+
+        const res = await request(app).get(`${users.router}${users.root}`);
+
+        expect(res.statusCode).toBe(codes.ok);
+      });
+    });
+
+    describe("And the database responds with an error", () => {
+      test(`Then it should respond with a status of ${codes.badRequest}`, async () => {
+        User.findAll = () => Promise.reject(new Error());
+
+        const res = await request(app).get(`${users.router}${users.root}`);
+
+        expect(res.statusCode).toBe(codes.badRequest);
+      });
+    });
+  });
+});
