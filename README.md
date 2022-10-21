@@ -74,3 +74,9 @@ Signs up the specified user (with the param /:id) to the specified activity (wit
 
 `🔹 GET ➡️ .../users/`  
 Responds with all the users and their respective activities, if any.
+
+`🔹 GET ➡️ .../sports-centers/`  
+Responds with all the centers and their respective users and activities, if any. The activites are retreived through a reference to the Activity model, as both tables are associated.
+
+`🔹 GET ➡️ .../activities/`  
+Responds with all the activities and their respective sport centers.
