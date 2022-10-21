@@ -1,7 +1,7 @@
 import { Activity, SportsCenter, User, UserActivities } from "./runModels.js";
 
 const runAssociations = () => {
-  const userWithCenterOneToMany = () => {
+  const activityWithCenterOneToMany = () => {
     SportsCenter.hasMany(Activity, {
       foreignKey: "centerId",
     });
@@ -20,7 +20,7 @@ const runAssociations = () => {
     });
   };
 
-  userWithCenterOneToMany();
+  activityWithCenterOneToMany();
   activityWithUserManyToMany();
 };
 

@@ -53,7 +53,7 @@ export const joinActivity = async (req, res, next) => {
 export const getAllUsers = async (req, res, next) => {
   try {
     const allUsers = await User.findAll(
-      setOptions(Activity, "name", "description")
+      setOptions(Activity, true, "name", "description")
     );
 
     res.status(codes.ok).json({ allUsers });

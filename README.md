@@ -33,7 +33,6 @@ Creates a new sports center. It is mandatory to fill at least the "name" field. 
 {
     "name": "Dir",
     "description": "Nice center in Barcelona",
-    "activities": ["Yoga"],
     "users": [{
       "name": "John"
     }]
