@@ -1,4 +1,4 @@
-import { Activity, SportsCenter, User } from "./runModels.js";
+import { Activity, SportsCenter, User, UserActivities } from "./runModels.js";
 
 const runAssociations = () => {
   const userWithCenterOneToMany = () => {
@@ -13,10 +13,10 @@ const runAssociations = () => {
   };
 
   const activityWithUserManyToMany = () => {
-    Activity.belongsToMany(User, { through: "user_activities" });
+    Activity.belongsToMany(User, { through: UserActivities });
 
     User.belongsToMany(Activity, {
-      through: "user_activities",
+      through: UserActivities,
     });
   };
 
