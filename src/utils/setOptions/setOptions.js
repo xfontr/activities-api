@@ -11,7 +11,8 @@ const setOptions = (model, through, ...attributes) => {
     ],
   };
 
-  if (through) options.include[0].through.attributes = [];
+  if (through)
+    options.include[0] = { ...options.include[0], through: { attributes: [] } };
 
   return options;
 };

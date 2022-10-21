@@ -70,7 +70,7 @@ describe(`Given a ${users.router}${users.root} endpoint`, () => {
   describe("When requested with GET method", () => {
     describe("And the database has users to retrieve", () => {
       test(`Then it should respond with a status of ${codes.ok}`, async () => {
-        User.findAll = () => Promise.resolve([{ ...mockUser, activities: [] }]);
+        User.findAll = () => Promise.resolve([{ ...mockUser }]);
 
         const res = await request(app).get(`${users.router}${users.root}`);
 

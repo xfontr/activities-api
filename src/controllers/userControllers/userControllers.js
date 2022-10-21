@@ -59,6 +59,7 @@ export const getAllUsers = async (req, res, next) => {
     res.status(codes.ok).json({ allUsers });
   } catch (error) {
     const privateMessage = error.message;
+
     const newError = CreateError(
       codes.badRequest,
       privateMessage,
