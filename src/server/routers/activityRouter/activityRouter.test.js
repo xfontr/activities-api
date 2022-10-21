@@ -38,3 +38,17 @@ describe(`Given a ${activities.router}${activities.root} endpoint`, () => {
     });
   });
 });
+
+describe(`Given a ${activities.router}${activities.root} endpoint`, () => {
+  describe("When requested with GET method", () => {
+    test(`Then it should respond with a status of ${codes.ok}`, async () => {
+      Activity.findAll = () => Promise.resolve([mockActivity]);
+
+      const res = await request(app).get(
+        `${activities.router}${activities.root}`
+      );
+
+      expect(res.statusCode).toBe(codes.ok);
+    });
+  });
+});

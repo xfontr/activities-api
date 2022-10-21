@@ -35,7 +35,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Dir\",\n    \"description\": \"Nice center in Barcelona\",\n    \"activities\": [\"Yoga\"],\n    \"users\": [{\n      \"name\": \"John\"\n    }]\n}",
+          "raw": "{\n    \"name\": \"Dffffir\",\n    \"description\": \"Nice center in Barcelona\",\n    \"users\": [{\n      \"name\": \"John\"\n    }]\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -43,8 +43,8 @@
           }
         },
         "url": {
-          "raw": "{{production}}/sport-centers/",
-          "host": ["{{production}}"],
+          "raw": "{{development}}/sport-centers/",
+          "host": ["{{development}}"],
           "path": ["sport-centers", ""]
         }
       },
@@ -57,7 +57,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"name\": \"Yoga\",\n    \"description\": \"Relax\",\n    \"centerId\": 1\n}",
+          "raw": "{\n    \"name\": \"Boxing\",\n    \"description\": \"Kill\",\n    \"centerId\": 1\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -113,13 +113,13 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "{{production}}/users/1?activityId=1",
+          "raw": "{{production}}/users/1?activityId=2",
           "host": ["{{production}}"],
           "path": ["users", "1"],
           "query": [
             {
               "key": "activityId",
-              "value": "1"
+              "value": "2"
             }
           ]
         }
@@ -135,6 +135,32 @@
           "raw": "{{production}}/users/",
           "host": ["{{production}}"],
           "path": ["users", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all sports centers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{development}}/sport-centers/",
+          "host": ["{{development}}"],
+          "path": ["sport-centers", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all activities with centers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{development}}/activities/",
+          "host": ["{{development}}"],
+          "path": ["activities", ""]
         }
       },
       "response": []
