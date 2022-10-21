@@ -1,0 +1,153 @@
+{
+  "info": {
+    "_postman_id": "0019f2b9-8a58-4810-aa30-02e33c4891ba",
+    "name": "Activities",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "21188607"
+  },
+  "item": [
+    {
+      "name": "Create user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Json\",\n    \"firstSurname\": \"Statham\",\n    \"secondSurname\": \"Maria\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{production}}/users/",
+          "host": ["{{production}}"],
+          "path": ["users", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create sports center",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Dir\",\n    \"description\": \"Nice center in Barcelona\",\n    \"activities\": [\"Yoga\"],\n    \"users\": [{\n      \"name\": \"John\"\n    }]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{production}}/sport-centers/",
+          "host": ["{{production}}"],
+          "path": ["sport-centers", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create activity",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Yoga\",\n    \"description\": \"Relax\",\n    \"centerId\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{production}}/activities/",
+          "host": ["{{production}}"],
+          "path": ["activities", ""],
+          "query": [
+            {
+              "key": "adf",
+              "value": "ds",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sign up user in center",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{production}}/sport-centers/?centerId=1",
+          "host": ["{{production}}"],
+          "path": ["sport-centers", ""],
+          "query": [
+            {
+              "key": "centerId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Join activity",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{production}}/users/1?activityId=1",
+          "host": ["{{production}}"],
+          "path": ["users", "1"],
+          "query": [
+            {
+              "key": "activityId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all users with activities",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{production}}/users/",
+          "host": ["{{production}}"],
+          "path": ["users", ""]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "development",
+      "value": "localhost:6000"
+    },
+    {
+      "key": "production",
+      "value": "https://activities-back.herokuapp.com"
+    }
+  ]
+}
