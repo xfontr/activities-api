@@ -27,6 +27,7 @@ const queryDatabase = (query) => {
     console.log(results);
     informationMessages();
   });
+  connection.close();
 };
 
 export default queryDatabase;

@@ -80,3 +80,22 @@ Responds with all the centers and their respective users and activities, if any.
 
 `🔹 GET ➡️ .../activities/`  
 Responds with all the activities and their respective sport centers.
+
+## SQL QUERIES
+
+Some examples of possible SQL queries directly with mySql or the used database:
+
+```js
+
+//Get all sports centers
+"SELECT id, name, description FROM `SportsCenters`",
+
+//Get all users
+"SELECT id, name, firstSurname, secondSurname, fullName FROM `Users`",
+
+// Get all activities
+"SELECT id, name, description FROM `Activities`",
+
+// Get all users with activities
+"SELECT `User`.`id`, `User`.`name`, `firstSurname`, `secondSurname`, `fullName`, `Activities`.`id` AS `activityId`, `Activities`.`name` AS `activityName`, `description` FROM `Users` AS `User` LEFT OUTER JOIN ( `UserActivities` INNER JOIN `Activities` ON `Activities`.`id` = `UserActivities`.`ActivityId`) ON `User`.`id` = `UserActivities`.`UserId`",
+```
