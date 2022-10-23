@@ -8,5 +8,6 @@ module.exports = {
     "!src/database/*.js",
     "!src/config/*.js",
     "!src/loadEnvironment.js",
+    "!src/data/*.js",
   ],
 };
